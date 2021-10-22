@@ -1,5 +1,6 @@
 from __future__ import print_function
 
+import time
 import torch
 import torch.nn as nn
 import torch.nn.parallel
@@ -8,9 +9,8 @@ import torch.optim as optim
 import torch.utils.data as data
 import torchvision.transforms as transforms
 import torchvision.datasets as datasets
-import models as models
 
-from pytorch_classification.utils.eval import AverageMeter, accuracy
+from utils.eval import AverageMeter, accuracy
 from torchinfo import summary
 
 # For tensorboard
