@@ -185,18 +185,17 @@ filter and approximates it with the N-Jet filters.
 Inputs:
     - args: the optimizer arguments
     - use_cuda: if on the GPU or not
-    - layer: the layer to use from pretrained AlexNet
     - channelNo: the input channel number
     - rangeStart: the selected starting channel
     - rangeEnd: the select end channel
 """ 
-def run_test(args, use_cuda, layer='conv1', channelNo=0, rangeStart=0, \
+def run_test(args, use_cuda, channelNo=0, rangeStart=0, \
             rangeEnd=5):
 
     
     """ Firt layer has size: 11x11x3x96 """
-    weights = np.load(open("alexnet.npy", "rb"),encoding="latin1",\
-                        allow_pickle=True).item()
+    weights = np.load(open("alexnet_conv1.npy", "rb"),encoding="latin1",\
+                        allow_pickle=True)
 
     normal_l = []
     structured_l = []
@@ -206,7 +205,7 @@ def run_test(args, use_cuda, layer='conv1', channelNo=0, rangeStart=0, \
 
     """ Loop over the channel range """
     for i in range(rangeStart, rangeEnd):
-        normal = weights[layer][0][:, :, channelNo:channelNo+3, i:i+1]
+        normal = weights[0][:, :, channelNo:channelNo+3, i:i+1]
 
         """ Approximate each channel with an N-Jet filter. """
         structured_i, errors_i, scales_i, alphas_i = approximate_normal_filters(
@@ -220,7 +219,7 @@ def run_test(args, use_cuda, layer='conv1', channelNo=0, rangeStart=0, \
                 max_steps=args.epochs,
                 use_cuda=use_cuda)
         
-        normal_l.append(weights[layer][0][:, :, :, i:i+1]) 
+        normal_l.append(weights[0][:, :, :, i:i+1]) 
         structured_l.append(structured_i.detach().cpu().numpy()) 
         errors_l.append(errors_i.detach().cpu().numpy())
         scales_l.append(scales_i.detach().cpu().numpy())
@@ -233,12 +232,12 @@ def run_test(args, use_cuda, layer='conv1', channelNo=0, rangeStart=0, \
     scales = np.stack(scales_l, axis=0)
     alphas = np.stack(alphas_l, axis=0)
     fig = plot_comparison(
-                    weights[layer][0][:, :, :, rangeStart:rangeEnd], \
+                    weights[0][:, :, :, rangeStart:rangeEnd], \
                     structured, \
                     errors, \
                     scales, \
                     alphas)
-    fig.savefig(layer+'-order-'+str(args.init_order)+'.pdf', \
+    fig.savefig('conv1-order-'+str(args.init_order)+'.pdf', \
                 bbox_inches='tight', pad_inches=0)
     plt.show()
 
