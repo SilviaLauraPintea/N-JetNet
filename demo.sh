@@ -11,7 +11,7 @@ INIT_ORDER=4.0
 
 
 
-python3 pytorch-classification/demo.py \
+python3 pytorch_classification/demo.py \
     --checkpoint checkpoints/cifar10/${MODEL} \
     --arch ${MODEL} \
     --data ${DATASET} \
