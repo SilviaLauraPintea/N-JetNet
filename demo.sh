@@ -9,9 +9,11 @@ INIT_K=2.0
 INIT_SCALE=0.0 # Not used if learned
 INIT_ORDER=4.0
 
-python3 demo.py \
-    -c checkpoints/cifar10/${MODEL} \
-    -a ${MODEL} \
+
+
+python3 pytorch-classification/demo.py \
+    --checkpoint checkpoints/cifar10/${MODEL} \
+    --arch ${MODEL} \
     --data ${DATASET} \
     --epochs ${EPOCHS} \
     --optim ${OPTIM} \
