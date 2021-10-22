@@ -1,8 +1,3 @@
-"""
-Training script for CIFAR-10/100
-Copyright (c) Wei YANG, 2017
-"""
-
 from __future__ import print_function
 
 import argparse
