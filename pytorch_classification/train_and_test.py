@@ -69,13 +69,14 @@ def train(trainset, model, criterion, optimizer, epoch, use_cuda, writer, args):
         batch_time.update(time.time() - end)
         end = time.time()
 
-        print("({batch}/{size}) Data: {data:.3f}s | Batch: {bt:.3f}s | "+\
-            "Loss: {loss:.4f} | top1: {top1: .4f} | top5: {top5: .4f}"\
+        print("({batch}/{size}) Data: {data:.3f}s | Batch: {bt:.3f}s | "\
             .format(
                 batch=batch_idx + 1,
                 size=len(trainset.loader),
                 data=data_time.avg,
-                bt=batch_time.avg,
+                bt=batch_time.avg)+
+            "Loss: {loss:.4f} | top1: {top1: .4f} | top5: {top5: .4f}"\
+           .format(
                 loss=losses.avg,
                 top1=top1.avg,
                 top5=top5.avg))
@@ -126,13 +127,14 @@ def test(testset, model, criterion, epoch, use_cuda, args):
         batch_time.update(time.time() - end)
         end = time.time()
 
-        print("({batch}/{size}) Data: {data:.3f}s | Batch: {bt:.3f}s | "+\
-            "Loss: {loss:.4f} | top1: {top1: .4f} | top5: {top5: .4f}"\
+        print("({batch}/{size}) Data: {data:.3f}s | Batch: {bt:.3f}s | "\
             .format(
                 batch=batch_idx + 1,
                 size=len(testset.loader),
                 data=data_time.avg,
-                bt=batch_time.avg,
+                bt=batch_time.avg)+
+            "Loss: {loss:.4f} | top1: {top1: .4f} | top5: {top5: .4f}"\
+            .format(
                 loss=losses.avg,
                 top1=top1.avg,
                 top5=top5.avg))
