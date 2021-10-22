@@ -183,8 +183,8 @@ def main():
         adjust_learning_rate(optimizer, epoch)
 
         print('\nEpoch: [%d | %d] LR: %f' % (epoch + 1, args.epochs, state['lr']))
-        train_loss, train_acc = train(trainset, model, criterion, optimizer, epoch, use_cuda, writer)
-        val_loss, val_acc = test(valset, model, criterion, epoch, use_cuda)
+        train_loss, train_acc = train(trainset, model, criterion, optimizer, epoch, use_cuda, writer, args)
+        val_loss, val_acc = test(valset, model, criterion, epoch, use_cuda, args)
         
         # Logging the data
         writer.add_scalar("Train/Loss", train_loss, epoch)
