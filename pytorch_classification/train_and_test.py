@@ -28,7 +28,7 @@ Input:
     - use_cuda: use the GPU or not, 
     - writer: the tensorboard logger 
 """
-def train(trainset, model, criterion, optimizer, epoch, use_cuda, writer):
+def train(trainset, model, criterion, optimizer, epoch, use_cuda, writer, args):
     """ Use training mode"""
     model.train()
 
@@ -91,7 +91,7 @@ Input:
     - epoch: the current epoch number, 
     - use_cuda: on GPU or not
 """
-def test(testset, model, criterion, epoch, use_cuda):
+def test(testset, model, criterion, epoch, use_cuda, args):
     """ Set the model to evaluate mode """
     model.eval()
 
