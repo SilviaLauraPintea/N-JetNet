@@ -10,7 +10,7 @@ import torch.utils.data as data
 import torchvision.transforms as transforms
 import torchvision.datasets as datasets
 
-from utils.eval import AverageMeter, accuracy
+from pytorch_classification.utils.eval import AverageMeter, accuracy
 from torchinfo import summary
 
 # For tensorboard
