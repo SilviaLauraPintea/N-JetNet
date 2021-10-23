@@ -39,12 +39,12 @@ class dataCIFAR:
             np.random.RandomState(10).shuffle(indices)
 
             if val:
-                indices = indices[len(indices) // 2:]
+                indices = indices[:len(indices) // 10]
                 self.loader = data.DataLoader(dataset, batch_size=batch,
                                 sampler=data.sampler.SubsetRandomSampler(indices),
                                 num_workers=workers)
             else:
-                indices = indices[:len(indices) // 2]
+                indices = indices[len(indices) // 10:]
                 self.loader = data.DataLoader(dataset, batch_size=batch,
                                 sampler=data.sampler.SubsetRandomSampler(indices),
                                 num_workers=workers)
