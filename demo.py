@@ -188,9 +188,9 @@ def main():
         
         # Logging the data
         writer.add_scalar("Train/Loss", train_loss, epoch)
-        writer.add_scalar("Val/Loss", test_loss, epoch)
+        writer.add_scalar("Val/Loss", val_loss, epoch)
         writer.add_scalar("Train/acc", train_acc, epoch)
-        writer.add_scalar("Val/acc", test_acc, epoch)
+        writer.add_scalar("Val/acc", val_acc, epoch)
 
         # Saving model
         is_best = val_acc > best_acc
