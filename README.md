@@ -46,4 +46,15 @@ checkpoints/                        -- directory where trained models are saved
 - Edit the ```demo.sh``` file to match the hyper parameters you want to use.
 - Run ```bash demo.sh```
 
+### Citation
+If you use this code, please cite the publication:
+```
+@article{pintea2021resolution,
+  title={Resolution learning in deep convolutional networks using scale-space theory},
+  author={Pintea, Silvia L and Tomen, Nergis and Goes, Stanley F and Loog, Marco and van Gemert, Jan C},
+  journal={TIP},
+  doi={10.1109/TIP.2021.3115001},
+  year={2021}
+}
+```
 
