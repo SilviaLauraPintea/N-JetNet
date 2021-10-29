@@ -15,7 +15,7 @@ The code was tested on Linux (Ubuntu 18.04.5 LTS):
 This code is organized as follows:
 ```
 checkpoints/cifar10/nin_shared_srf  -- directory where trained models are saved (contains an example of trained NiN with structured N-Jet layer)
-models/                             -- the pytroch layer definition of models
+models/                             -- the pytorch layer definition of models
         nin.py                      -- an example of the original network-in-network (NiN) model
         nin_shared_srf.py           -- an example of using the structured N-Jet layer for the network-in-network (NiN) model 
 srf                                 -- contains the structured N-Jet layer implementation
