@@ -141,7 +141,7 @@ def test(testset, model, criterion, epoch, use_cuda, args):
                     loss=losses.avg,
                     top1=top1.avg,
                     top5=top5.avg))
-            torch.cuda.empty_cache() 
+        torch.cuda.empty_cache() 
     return (losses.avg, top1.avg)
 
   
