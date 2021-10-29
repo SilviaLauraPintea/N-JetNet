@@ -37,7 +37,8 @@ All credit for third party sofware is with the authors.
 The output will be saved in:
 ```
 checkpoints/                        -- directory where trained models are saved
-        cifar10/nin_shared_srf      -- contains an example of trained NiN with structured N-Jet layer)
+        cifar10/
+                nin_shared_srf      -- contains an example of trained NiN with structured N-Jet layer)
 
 ```
 
