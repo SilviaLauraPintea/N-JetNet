@@ -56,6 +56,9 @@ parser.add_argument('--weight-decay', '--wd', default=5e-4, type=float,
                     help='Weight regularization.')
 parser.add_argument('--optim', default='sgd', type=str,
                     help='The optimizer.')
+parser.add_argument('--gamma', type=float, default=0.1,                         
+                    help='LR is multiplied by gamma on schedule.')                               
+                    
 # Checkpoints
 parser.add_argument('--checkpoint', default='checkpoint', type=str,
                     help='Path where to save the checkpoint.')
