@@ -129,7 +129,7 @@ def test(testset, model, criterion, epoch, use_cuda, args):
         batch_time.update(time.time() - end)
         end = time.time()
 
-        if batch_idx%50==0: 
+        if batch_idx%20==0: 
             print("({batch}/{size}) Data: {data:.3f}s | Batch: {bt:.3f}s | "\
                 .format(
                     batch=batch_idx + 1,
