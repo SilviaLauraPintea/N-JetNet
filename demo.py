@@ -206,7 +206,7 @@ def main():
                 'optimizer' : optimizer.state_dict(),
             }, is_best, checkpoint=args.checkpoint)
         
-    test_loss, test_acc = test(testset, model, criterion, start_epoch, use_cuda)
+    test_loss, test_acc = test(testset, model, criterion, start_epoch, use_cuda, args)
     print(' Final test loss:  %.8f, test Acc:  %.2f' % (test_loss, test_acc))
 
     savefig(os.path.join(args.checkpoint, 'log.eps'))
