@@ -134,6 +134,8 @@ class Srf_layer_shared(nn.Module):
                     padding=int(self.filters.shape[2]/2),
                     groups=self.groups)
 
+
+	self.extra_reg = torch.abs(self.sigma) + torch.norm(self.alphas)  	
         return self.final_conv
 
     """ List the parameters. """
