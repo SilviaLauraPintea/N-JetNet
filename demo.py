@@ -60,7 +60,7 @@ parser.add_argument('--gamma', type=float, default=0.1,
                     help='LR is multiplied by gamma on schedule.')                               
                     
 # Checkpoints
-parser.add_argument('--checkpoint', default='checkpoint', type=str,
+parser.add_argument('--checkpoint', default='checkpoints', type=str,
                     help='Path where to save the checkpoint.')
 parser.add_argument('--resume', default='', type=str,
                     help='Path to load the checkpoint.')
