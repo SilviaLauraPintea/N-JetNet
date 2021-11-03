@@ -33,7 +33,7 @@ def gaussian_basis_filters_shared(
             
     """ Define the 0th order Gaussian vector for the current scale. """
     try:
-        use_cuda: x = x.cuda()   
+        x = x.cuda()   
     except:
         print("No cuda available")    
     gauss = torch.div(1.0, (math.sqrt(2.0 * math.pi) * sigma[0])) \
