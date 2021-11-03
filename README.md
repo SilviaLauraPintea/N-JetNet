@@ -5,10 +5,10 @@ Implements the N-Jet layer from "Resolution learning in deep convolutional netwo
 ### Requirements
 The code was tested on Linux (Ubuntu 18.04.5 LTS):
 - python 3.6.9
-- pytorch 1.10 (https://pytorch.org/) with additional packages:
+- pytorch 1.0.0 (https://pytorch.org/) with additional packages:
     - tensorboard
     - torchvision    
-- cuda 11.3
+- cuda 10.2
 
 ### Organization:
 
