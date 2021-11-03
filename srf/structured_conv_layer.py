@@ -87,12 +87,13 @@ class Srf_layer_shared(nn.Module):
         try:
             self.x = torch.arange(start=-self.filtersize.detach().cpu().float(), \
                     end=self.filtersize.detach().cpu().float()+1, step=1)
+            self.hermite = torch.arange(start=-self.filtersize.detach().cpu().float(), \
+                    end=self.filtersize.detach().cpu().float()+1, step=1)
         except: 
             print("Sigma value is off:", self.sigma)
 
 
         """ Create the Gaussian derivative filters. """
-        self.hermite = self.x
         self.filters, self.basis, self.gauss, self.hermite = gaussian_basis_filters_shared(
                                             x=self.x,\
                                             hermite=self.hermite,\
@@ -114,12 +115,13 @@ class Srf_layer_shared(nn.Module):
             
             self.x = torch.arange(start=-self.filtersize.detach().cpu().float(), \
                     end=self.filtersize.detach().cpu().float()+1, step=1)
+            self.hermite = torch.arange(start=-self.filtersize.detach().cpu().float(), \
+                    end=self.filtersize.detach().cpu().float()+1, step=1)
         except: 
             print("Sigma value is off:", self.sigma, "filter size:", self.filtersize)
 
 
         """ Create the Gaussian derivative filters. """
-        self.hermite = self.x
         self.filters, self.basis, self.gauss, self.hermite = gaussian_basis_filters_shared(
                                             x=self.x,\
                                             hermite=self.hermite,\
