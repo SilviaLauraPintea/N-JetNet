@@ -32,7 +32,10 @@ def gaussian_basis_filters_shared(
     basis_tensors = []
             
     """ Define the 0th order Gaussian vector for the current scale. """
-    if use_cuda: x = x.cuda()   
+    try:
+        use_cuda: x = x.cuda()   
+    except:
+        print("No cuda available")    
     gauss = torch.div(1.0, (math.sqrt(2.0 * math.pi) * sigma[0])) \
         * torch.exp( torch.div( x*x, (-2.0*sigma[0]*sigma[0])) )
     gauss = gauss / torch.sum(gauss)
@@ -53,9 +56,11 @@ def gaussian_basis_filters_shared(
        
     """ Create the filter by combining the basis with the coefficients, alpha."""
     basis_filter = None 
-    if alphas is not None:
+    try:
         # [out_channels,in_channels,kernel_size[0],kernel_size[1]]
         basis_filter = torch.einsum("fck,fhw->kchw", alphas, basis_tensor)
+    except:
+        print("No alphas given")    
     return basis_filter, basis_tensor, gauss, hermite
 
 
