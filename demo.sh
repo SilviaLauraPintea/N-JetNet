@@ -7,7 +7,7 @@ LR=0.1
 # SRF parameters
 INIT_K=2.0
 INIT_SCALE=0.0 # Not used if learned
-INIT_ORDER=4.0
+INIT_ORDER=2.0
 
 
 
