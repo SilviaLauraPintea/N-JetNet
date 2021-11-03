@@ -68,8 +68,15 @@ class Srf_layer_shared(nn.Module):
             self.scales = torch.nn.Parameter(torch.tensor(np.full((1), \
                             self.init_scale), device=self.device,\
                             dtype=torch.float32), requires_grad=False)      
-        self.extra_reg = 0
-
+        self.extra_reg = 0                                                      
+        self.sigma = torch.zeros((1,))                                          
+        self.filtersize = torch.zeros((1,))                                     
+        self.hermite = torch.Tensor()                                           
+        self.x = torch.Tensor()                                                 
+        self.filters = torch.Tensor()                                           
+        self.basis = torch.Tensor()                                             
+        self.gauss = torch.Tensor()   
+  
     """ Forward pass without inputs to return the filters only. """
     def forward_no_input(self):
         """ Define sigma from the scale: sigma = 2^scale """
@@ -99,7 +106,7 @@ class Srf_layer_shared(nn.Module):
     """ Forward pass with inputs: creates the filters and performs the convolution. """
     def forward(self, data): 
         """ Define sigma from the scale: sigma = 2^scale """
-        self.sigma = torch.pow(torch.tensor([2.0]).cuda(), self.scales)
+        self.sigma = 2.0**self.scales
         self.filtersize = torch.ceil(self.init_k*self.sigma[0]+0.5)
         
         """ Define the grid on which the filter is created. """
@@ -126,7 +133,7 @@ class Srf_layer_shared(nn.Module):
             data = safe_sample(data, self.sigma)   
 
         """ Perform the convolution. """
-        self.final_conv = F.conv2d(
+        final_conv = F.conv2d(
                     input=data, # NCHW
                     weight=self.filters, # KCHW
                     bias=None,
@@ -136,7 +143,7 @@ class Srf_layer_shared(nn.Module):
 
 
         self.extra_reg = (self.sigma[0] + torch.norm(self.alphas)).item()  	
-        return self.final_conv
+        return final_conv
 
     """ List the parameters. """
     def num_params(self):
