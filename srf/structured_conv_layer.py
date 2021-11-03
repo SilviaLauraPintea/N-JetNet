@@ -135,7 +135,7 @@ class Srf_layer_shared(nn.Module):
                     groups=self.groups)
 
 
-        self.extra_reg = (self.sigma + torch.norm(self.alphas)).item()  	
+        self.extra_reg = (self.sigma[0] + torch.norm(self.alphas)).item()  	
         return self.final_conv
 
     """ List the parameters. """
