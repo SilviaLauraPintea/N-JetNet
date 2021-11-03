@@ -11,8 +11,7 @@ INIT_ORDER=4.0
 
 
 
-python3 demo.py 
-    --checkpoint 'checkpoints/cifar10/'${MODEL} \
+python3 demo.py --checkpoint 'checkpoints/cifar10/'${MODEL} \
     --arch ${MODEL} \
     --data ${DATASET} \
     --epochs ${EPOCHS} \
