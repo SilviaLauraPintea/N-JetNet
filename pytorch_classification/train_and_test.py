@@ -43,12 +43,14 @@ def train(trainset, model, criterion, optimizer, epoch, use_cuda, writer, args):
 
     """ Loop over the training data """        
     for batch_idx, (inputs, targets) in enumerate(trainset.loader):
+        try:
+            inputs, targets = inputs.cuda(), targets.cuda()
+        except:
+            print("No cuda available")        
+        inputs, targets = torch.autograd.Variable(inputs), torch.autograd.Variable(targets)
+
         """ Measure data loading time """
         data_time.update(time.time() - end)
-
-        if use_cuda:
-            inputs, targets = inputs.cuda(), targets.cuda()
-        inputs, targets = torch.autograd.Variable(inputs), torch.autograd.Variable(targets)
 
         """ Get predictions and loss"""
         outputs = model(inputs)
@@ -108,12 +110,14 @@ def test(testset, model, criterion, epoch, use_cuda, args):
     """ Loop over the test data batches"""
     end = time.time()
     for batch_idx, (inputs, targets) in enumerate(testset.loader):
+        try:
+            inputs, targets = inputs.cuda(), targets.cuda()
+        except:
+            print("No cuda available")    
+        inputs, targets = torch.autograd.Variable(inputs, volatile=True), torch.autograd.Variable(targets)
+        
         """ Measure the data loading time """
         data_time.update(time.time() - end)
-
-        if use_cuda:
-            inputs, targets = inputs.cuda(), targets.cuda()
-        inputs, targets = torch.autograd.Variable(inputs, volatile=True), torch.autograd.Variable(targets)
 
         """ Get network predictions and loss"""
         outputs = model(inputs)
