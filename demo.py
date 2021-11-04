@@ -25,6 +25,10 @@ model_names = sorted(name for name in models.__dict__
     if name.islower() and not name.startswith("__")
     and callable(models.__dict__[name]))
 
+PLOT=False                                                                      
+if PLOT:                                                                        
+    import matplotlib.pyplot as plt                                                                                       
+
 parser = argparse.ArgumentParser()
 
 # N-Jet options
@@ -209,7 +213,10 @@ def main():
     test_loss, test_acc = test(testset, model, criterion, start_epoch, use_cuda, args)
     print(' Final test loss:  %.8f, test Acc:  %.2f' % (test_loss, test_acc))
 
-    savefig(os.path.join(args.checkpoint, 'log.eps'))
+
+    if PLOT:                                                                    
+        dpi = 150 if dpi == None else dpi                                       
+        plt.savefig(os.path.join(args.checkpoint, 'log.eps'), dpi=dpi)          
     writer.flush()
     writer.close()
 
