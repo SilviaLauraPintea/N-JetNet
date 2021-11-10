@@ -148,7 +148,7 @@ def main():
         print("Model not implemented")
 
     # Get model summary to list the number of parameters. 
-    summary(model, input_size=(1, 1, 32, 32))
+    summary(model, input_size=(1, 3, 32, 32))
     model = torch.nn.DataParallel(model)
     if use_cuda:
         model = model.cuda()
