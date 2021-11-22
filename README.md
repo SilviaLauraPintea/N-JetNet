@@ -1,4 +1,7 @@
+
 # N-JetNet
+<img src="njet_net.png" style="width:550px;"/>
+
 Implements the N-Jet layer from "Resolution learning in deep convolutional networks using scale-space theory", Silvia L.Pintea, Nergis Tomen, Stanley F. Goes, Marco Loog, Jan C. van Gemert, Transactions on Image Processing, 2021. (<a href="https://arxiv.org/abs/2106.03412">archive link </a>)
 
 
